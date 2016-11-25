@@ -1,7 +1,0 @@
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\bin\Debug\SolrQueryNET.dll
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\bin\Debug\SolrQueryNET.pdb
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\obj\Debug\SolrQueryNET.csprojResolveAssemblyReference.cache
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\obj\Debug\SolrQueryNET.dll
-C:\Users\Kris\Desktop\solr-query-dotnet\SolrQueryNET\SolrQueryNET\obj\Debug\SolrQueryNET.pdb
