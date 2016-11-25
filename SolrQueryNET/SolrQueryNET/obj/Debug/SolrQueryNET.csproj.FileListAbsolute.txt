@@ -1,0 +1,7 @@
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\obj\Debug\SolrQueryNET.csprojResolveAssemblyReference.cache
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\bin\Debug\SolrQueryNET.dll
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\bin\Debug\SolrQueryNET.pdb
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\bin\Debug\Newtonsoft.Json.dll
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\bin\Debug\Newtonsoft.Json.xml
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\obj\Debug\SolrQueryNET.dll
+c:\users\kris\documents\visual studio 2015\Projects\SolrQueryNET\SolrQueryNET\obj\Debug\SolrQueryNET.pdb
