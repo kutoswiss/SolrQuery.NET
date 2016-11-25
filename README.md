@@ -23,3 +23,6 @@ static void Main(string[] args)
         Console.WriteLine(i.Json.ToString());
 }
 ```
+
+## Dependencies
+* [Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json)
