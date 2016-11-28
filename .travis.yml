@@ -1,2 +1,2 @@
 language: csharp
-solution: SolrQueryNet.sln
+solution: SolrQueryNET/SolrQueryNET.sln
