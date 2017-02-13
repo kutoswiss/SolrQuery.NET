@@ -27,6 +27,19 @@ namespace SolrQueryNET
 {
     public class SolrResults
     {
+        #region Constants
+        /// <summary>
+        /// Static fields name from Solr
+        /// </summary>
+        private const string FIELD_RESPONSE_HEADER = "responseHeader";
+        private const string FIELD_STATUS = "status";
+        private const string FIELD_Q_TIME = "QTime";
+        private const string FIELD_RESPONSE = "response";
+        private const string FIELD_START = "start";
+        private const string FIELD_DOCS = "docs";
+        private const string FIELD_NUM_FOUND = "numFound";
+        #endregion
+
         #region Structures
         public struct ResponseHeader_s
         {
@@ -43,15 +56,21 @@ namespace SolrQueryNET
         #endregion
 
         #region Properties
+        // Privates
         private ResponseHeader_s _responseHeader;
         private Response_s _response;
 
+        // Publics
         public ResponseHeader_s ResponseHeader { get { return this._responseHeader; } }
         public Response_s Response { get { return this._response; } }
         public JObject Json { get; private set; }
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="res"></param>
         public SolrResults(String res)
         {
             this.Json = JObject.Parse(res);
@@ -60,18 +79,22 @@ namespace SolrQueryNET
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Method to parse results from Json
+        /// </summary>
+        /// <param name="json"></param>
         private void ParseFromJson(JObject json)
         {
             // Parse the response header node
-            this._responseHeader.status = Int32.Parse(json["responseHeader"]["status"].ToString());
-            this._responseHeader.QTime = Int32.Parse(json["responseHeader"]["QTime"].ToString());
+            this._responseHeader.status = Int32.Parse(json[FIELD_RESPONSE_HEADER][FIELD_STATUS].ToString());
+            this._responseHeader.QTime = Int32.Parse(json[FIELD_RESPONSE_HEADER][FIELD_Q_TIME].ToString());
 
             // Parse the response node
-            this._response.numFound = Int32.Parse(json["response"]["numFound"].ToString());
-            this._response.start = Int32.Parse(json["response"]["start"].ToString());
+            this._response.numFound = Int32.Parse(json[FIELD_RESPONSE][FIELD_NUM_FOUND].ToString());
+            this._response.start = Int32.Parse(json[FIELD_RESPONSE][FIELD_START].ToString());
             this._response.docs = new List<SolrItemResult>();
 
-            foreach(JObject i in json["response"]["docs"])
+            foreach (JObject i in json[FIELD_RESPONSE][FIELD_DOCS])
                 this._response.docs.Add(new SolrItemResult(i));
         }
         #endregion

@@ -34,7 +34,10 @@ namespace SolrQueryNET
         #endregion
 
         #region Enums
-        public enum param_e
+        /// <summary>
+        /// Common parameters names
+        /// </summary>
+        public enum Parameter
         {
             q,
             fq,
@@ -47,10 +50,24 @@ namespace SolrQueryNET
             indent,
             debugQuery
         }
+
+        /// <summary>
+        /// Reponse writer types
+        /// </summary>
+        public enum ResponseWriter
+        {
+            // Not yet implemented
+            //xml,
+            //python,
+            //ruby,
+            //php,
+            //csv,
+            json
+        }
         #endregion
 
         #region Structures
-        public struct sort_param_st
+        public struct SortValue
         {
             public String field;
             public bool desc;
@@ -58,9 +75,9 @@ namespace SolrQueryNET
         #endregion
 
         #region Fields & Properties
-        private Dictionary<param_e, String> values;
+        private Dictionary<Parameter, String> values;
 
-        public Dictionary<param_e, String> Values
+        public Dictionary<Parameter, String> Values
         {
             get { return values; }
         }
@@ -82,7 +99,7 @@ namespace SolrQueryNET
         /// </summary>
         /// <param name="p"></param>
         /// <param name="value"></param>
-        public void BindValue(param_e p, String value)
+        public void BindValue(Parameter p, String value)
         {
             this.values[p] += value;
         }
@@ -94,7 +111,7 @@ namespace SolrQueryNET
         /// <param name="field">name of the field</param>
         /// <param name="value">Value of the field</param>
         /// <param name="quote">Put double quote the value</param>
-        public void BindValue(param_e p, String field, String value, bool quote = false)
+        public void BindValue(Parameter p, String field, String value, bool quote = false)
         {
             this.values[p] += String.Format("{0}:{2}{1}{2}", field, value, (quote) ? "\"" : String.Empty);
         }
@@ -105,7 +122,7 @@ namespace SolrQueryNET
         /// <param name="p"></param>
         /// <param name="op"></param>
         /// <param name="values"></param>
-        public void BindValue(param_e p, operator_e op, params String[] values)
+        public void BindValue(Parameter p, QueryOperator op, params String[] values)
         {
             for (int i = 0; i < values.Count(); i++)
             {
@@ -119,7 +136,7 @@ namespace SolrQueryNET
         /// </summary>
         /// <param name="p"></param>
         /// <param name="value"></param>
-        public void ReplaceValue(param_e p, String value)
+        public void ReplaceValue(Parameter p, String value)
         {
             this.values[p] = value;
         }
@@ -129,15 +146,15 @@ namespace SolrQueryNET
         /// </summary>
         /// <param name="p">Solr Common parameter</param>
         /// <param name="op">Operator value</param>
-        public void BindOperator(param_e p, operator_e op)
+        public void BindOperator(Parameter p, QueryOperator op)
         {
             String operator_str = String.Empty;
             switch (op)
             {
-                case operator_e.AND: operator_str = " AND ";
+                case QueryOperator.AND: operator_str = " AND ";
                     break;
 
-                case operator_e.OR: operator_str = " OR ";
+                case QueryOperator.OR: operator_str = " OR ";
                     break;
 
                 default: break;
@@ -151,7 +168,7 @@ namespace SolrQueryNET
         /// </summary>
         /// <param name="p">Solr Common parameter</param>
         /// <param name="s">Sign value</param>
-        public void BindSign(param_e p, sign_e s)
+        public void BindSign(Parameter p, QuerySymbol s)
         {
             this.values[p] += SolrQuery.SignToStr(s);
         }
@@ -160,9 +177,9 @@ namespace SolrQueryNET
         /// Method to set the sort value
         /// </summary>
         /// <param name="s"></param>
-        public void SetSort(sort_param_st s)
+        public void SetSort(SortValue s)
         {
-            this.ReplaceValue(param_e.sort, String.Format("{0} {1}", s.field, (s.desc) ? "desc" : "asc"));
+            this.ReplaceValue(Parameter.sort, String.Format("{0} {1}", s.field, (s.desc) ? "desc" : "asc"));
         }
 
         /// <summary>
@@ -171,21 +188,31 @@ namespace SolrQueryNET
         /// <param name="p"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        public void SetDateRange(param_e p, String field, DateTime from, DateTime to)
+        public void SetDateRange(Parameter p, String field, DateTime from, DateTime to)
         {
             const String format = "yyyy-MM-ddTHH:mm:ssZ";
             this.values[p] += String.Format("{0}:[{1} TO {2}]", field, from.ToString(format), to.ToString(format));
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="wt"></param>
+        public void SetResponseWriter(ResponseWriter wt)
+        {
+            this.ReplaceValue(Parameter.wt, wt.ToString());
+        }
+
         #endregion
 
         #region Implemented methods
         public string BuildQuery()
         {
             String url = String.Empty;
-            foreach (KeyValuePair<param_e, string> key in this.values)
+            foreach (KeyValuePair<Parameter, string> key in this.values)
             {
                 url += (key.Value != String.Empty) ? String.Format("{0}={1}&",
-                    ((param_e)key.Key).ToString(),
+                    ((Parameter)key.Key).ToString(),
                     HttpUtility.UrlEncode(key.Value)) : String.Empty;
             }
 
@@ -194,17 +221,17 @@ namespace SolrQueryNET
 
         public void Reset()
         {
-            this.values = new Dictionary<param_e, string>();
-            this.values.Add(param_e.q, String.Empty);
-            this.values.Add(param_e.fq, String.Empty);
-            this.values.Add(param_e.sort, String.Empty);
-            this.values.Add(param_e.start, DEFAULT_START.ToString());
-            this.values.Add(param_e.rows, DEFAULT_ROWS.ToString());
-            this.values.Add(param_e.fl, String.Empty);
-            this.values.Add(param_e.df, String.Empty);
-            this.values.Add(param_e.wt, "json");
-            this.values.Add(param_e.indent, "false");
-            this.values.Add(param_e.debugQuery, String.Empty);
+            this.values = new Dictionary<Parameter, string>();
+            this.values.Add(Parameter.q, String.Empty);
+            this.values.Add(Parameter.fq, String.Empty);
+            this.values.Add(Parameter.sort, String.Empty);
+            this.values.Add(Parameter.start, DEFAULT_START.ToString());
+            this.values.Add(Parameter.rows, DEFAULT_ROWS.ToString());
+            this.values.Add(Parameter.fl, String.Empty);
+            this.values.Add(Parameter.df, String.Empty);
+            this.values.Add(Parameter.wt, (ResponseWriter.json).ToString());
+            this.values.Add(Parameter.indent, "false");
+            this.values.Add(Parameter.debugQuery, String.Empty);
         }
         #endregion
     }

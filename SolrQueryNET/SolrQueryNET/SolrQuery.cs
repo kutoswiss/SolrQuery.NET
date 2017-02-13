@@ -26,21 +26,6 @@ using System.Net;
 
 namespace SolrQueryNET
 {
-    public enum operator_e
-    {
-        AND,
-        OR,
-        NONE,
-    }
-
-    public enum sign_e
-    {
-        OPEN_P,
-        CLOSE_P,
-        AMPERSAND,
-        NONE
-    }
-
     public class SolrQuery
     {
         #region Enums
@@ -50,32 +35,30 @@ namespace SolrQueryNET
             spell
         }
 
-        private  enum SolrParamName_e
+        private enum InputParameter_e
         {
             COMMON,
             SPELLCHECK
         }
-
         #endregion
 
         #region Properties & Fields
         // Properties
         public RequestHandler_e RequestHandler { get; set; }
         public Uri Uri { get; private set; }
-        private Dictionary<SolrParamName_e, ISolrParam> Parameters { get; set; }
+        private Dictionary<InputParameter_e, ISolrParam> Parameters { get; set; }
 
         public SolrCommon Common
         {
-            get { return (SolrCommon) this.Parameters[SolrParamName_e.COMMON]; }
-            set { this.Parameters[SolrParamName_e.COMMON] = value; }
+            get { return (SolrCommon) this.Parameters[InputParameter_e.COMMON]; }
+            set { this.Parameters[InputParameter_e.COMMON] = value; }
         }
 
         public SolrSpellCheck Spellcheck
         {
-            get { return (SolrSpellCheck) this.Parameters[SolrParamName_e.SPELLCHECK]; }
-            set { this.Parameters[SolrParamName_e.SPELLCHECK] = value; }
+            get { return (SolrSpellCheck) this.Parameters[InputParameter_e.SPELLCHECK]; }
+            set { this.Parameters[InputParameter_e.SPELLCHECK] = value; }
         }
-
         #endregion
 
         #region Constructors
@@ -85,9 +68,9 @@ namespace SolrQueryNET
         private SolrQuery()
         {
             this.RequestHandler = RequestHandler_e.select;
-            this.Parameters = new Dictionary<SolrParamName_e, ISolrParam>();
-            this.Parameters.Add(SolrParamName_e.COMMON, new SolrCommon());
-            this.Parameters.Add(SolrParamName_e.SPELLCHECK, new SolrSpellCheck());
+            this.Parameters = new Dictionary<InputParameter_e, ISolrParam>();
+            this.Parameters.Add(InputParameter_e.COMMON, new SolrCommon());
+            this.Parameters.Add(InputParameter_e.SPELLCHECK, new SolrSpellCheck());
         }
 
         /// <summary>
@@ -118,18 +101,18 @@ namespace SolrQueryNET
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
-        public static String SignToStr(sign_e s)
+        public static String SignToStr(QuerySymbol s)
         {
             String res = String.Empty;
             switch (s)
             {
-                case sign_e.OPEN_P: res = "(";
+                case QuerySymbol.OPEN_P: res = "(";
                     break;
 
-                case sign_e.CLOSE_P: res = ")";
+                case QuerySymbol.CLOSE_P: res = ")";
                     break;
 
-                case sign_e.AMPERSAND: res = "&";
+                case QuerySymbol.AMPERSAND: res = "&";
                     break;
 
                 default: break;
@@ -147,7 +130,7 @@ namespace SolrQueryNET
         {
             String url = String.Format("http://{0}/{1}?", this.Uri.AbsoluteUri, this.RequestHandler.ToString());
 
-            foreach (KeyValuePair<SolrParamName_e, ISolrParam> p in this.Parameters)
+            foreach (KeyValuePair<InputParameter_e, ISolrParam> p in this.Parameters)
                 url += p.Value.BuildQuery();
 
             return url;
@@ -180,7 +163,7 @@ namespace SolrQueryNET
         /// </summary>
         public void Reset()
         {
-            foreach (KeyValuePair<SolrParamName_e, ISolrParam> p in this.Parameters)
+            foreach (KeyValuePair<InputParameter_e, ISolrParam> p in this.Parameters)
                 p.Value.Reset();
         }
         #endregion

@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolrQueryNET", "SolrQueryNET\SolrQueryNET.csproj", "{74B99E00-D89E-4D37-8210-5B889D1B4D96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolrQueryNET-Tester", "SolrQueryNET-Tester\SolrQueryNET-Tester.csproj", "{5C7655A2-9AF7-4C94-AA51-B1A7840E9FBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{74B99E00-D89E-4D37-8210-5B889D1B4D96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{74B99E00-D89E-4D37-8210-5B889D1B4D96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74B99E00-D89E-4D37-8210-5B889D1B4D96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7655A2-9AF7-4C94-AA51-B1A7840E9FBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7655A2-9AF7-4C94-AA51-B1A7840E9FBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7655A2-9AF7-4C94-AA51-B1A7840E9FBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7655A2-9AF7-4C94-AA51-B1A7840E9FBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
