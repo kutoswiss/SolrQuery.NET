@@ -20,6 +20,7 @@
  */
 
 
+using SolrQueryNET.Parameters;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -38,6 +39,7 @@ namespace SolrQueryNET
         private enum InputParameter_e
         {
             COMMON,
+            FACET,
             SPELLCHECK
         }
         #endregion
@@ -52,6 +54,12 @@ namespace SolrQueryNET
         {
             get { return (SolrCommon) this.Parameters[InputParameter_e.COMMON]; }
             set { this.Parameters[InputParameter_e.COMMON] = value; }
+        }
+
+        public SolrFacet Facet
+        {
+            get { return (SolrFacet)this.Parameters[InputParameter_e.FACET]; }
+            set { this.Parameters[InputParameter_e.FACET] = value; }
         }
 
         public SolrSpellCheck Spellcheck
@@ -70,6 +78,7 @@ namespace SolrQueryNET
             this.RequestHandler = RequestHandler_e.select;
             this.Parameters = new Dictionary<InputParameter_e, ISolrParam>();
             this.Parameters.Add(InputParameter_e.COMMON, new SolrCommon());
+            this.Parameters.Add(InputParameter_e.FACET, new SolrFacet());
             this.Parameters.Add(InputParameter_e.SPELLCHECK, new SolrSpellCheck());
         }
 

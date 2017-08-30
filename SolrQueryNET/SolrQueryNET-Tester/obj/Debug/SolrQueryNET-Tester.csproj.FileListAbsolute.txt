@@ -18,3 +18,12 @@ C:\Users\Kris\Downloads\SolrQuery.NET-master\SolrQuery.NET-master\SolrQuery.NET-
 C:\Users\Kris\Downloads\SolrQuery.NET-master\SolrQuery.NET-master\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\obj\Debug\SolrQueryNET-Tester.csprojResolveAssemblyReference.cache
 C:\Users\Kris\Downloads\SolrQuery.NET-master\SolrQuery.NET-master\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\obj\Debug\SolrQueryNET-Tester.exe
 C:\Users\Kris\Downloads\SolrQuery.NET-master\SolrQuery.NET-master\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\obj\Debug\SolrQueryNET-Tester.pdb
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\bin\Debug\SolrQueryNET-Tester.exe.config
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\obj\Debug\SolrQueryNET-Tester.exe
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\obj\Debug\SolrQueryNET-Tester.pdb
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\bin\Debug\SolrQueryNET-Tester.exe
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\bin\Debug\SolrQueryNET-Tester.pdb
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\bin\Debug\SolrQueryNET.dll
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\bin\Debug\Newtonsoft.Json.dll
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\bin\Debug\SolrQueryNET.pdb
+C:\Users\rejas.ITU_USERS.005\Projects\kutoswiss\SolrQuery.NET-master\SolrQueryNET\SolrQueryNET-Tester\obj\Debug\SolrQueryNET-Tester.csprojResolveAssemblyReference.cache

@@ -31,10 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -48,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Parameters\ISolrParam.cs" />
     <Compile Include="Parameters\SolrCommon.cs" />
+    <Compile Include="Parameters\SolrFacet.cs" />
     <Compile Include="Parameters\SolrSpellCheck.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\SolrItemResult.cs" />
