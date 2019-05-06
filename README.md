@@ -1,9 +1,6 @@
 # SolrQuery.NET [![Build Status](https://travis-ci.org/kutoswiss/SolrQuery.NET.svg?branch=master)](https://travis-ci.org/kutoswiss/SolrQuery.NET.svg?branch=master)
 
-A simple library written in C# to perform queries on Solr search engine
-
-## Installation
-Coming soon
+A simple library written in C# to build queries for Solr search engine.
 
 ## Simple usage
 
